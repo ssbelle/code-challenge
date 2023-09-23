@@ -21,5 +21,15 @@ export default {
 <style lang="scss">
 .search-wrapper {
   display: flex;
+  flex: 2;
+  order: 1;
+}
+
+// Mobile Styles
+@media (max-width: 884px) {
+  .search-wrapper {
+    order: 2;
+    margin-top: 1.38rem;
+  }
 }
 </style>

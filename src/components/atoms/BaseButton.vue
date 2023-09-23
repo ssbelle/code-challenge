@@ -8,7 +8,7 @@ export default {
   props: {
     variant: {
       type: String,
-      validators: (value) => ['primary', 'secondary'].includes(value)
+      validators: (value: string) => ['primary', 'secondary'].includes(value)
     },
     text: {
       type: String || Number
@@ -54,7 +54,6 @@ export default {
   color: var(--black-100);
 
   &:hover {
-    background: var(--white-400);
     color: var(--purple-100);
   }
 }

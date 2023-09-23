@@ -1,5 +1,12 @@
 <template>
-  <section class="settings-wrapper">
+  <section v-if="useMobileMenu()" class="settings-mobile-menu-wrapper">
+    <img
+      alt="app-settings-mobile-menu"
+      class="settings-mobile-icon"
+      src="@/assets/settings-mobile-menu-icon.svg"
+    />
+  </section>
+  <section v-else class="settings-wrapper">
     <div class="icon-wrapper">
       <img
         alt="app-settings-icon"
@@ -33,7 +40,27 @@ export default {
   setup() {
     return {}
   },
-  components: {}
+  data() {
+    return {
+      width: 885
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+  },
+  components: {},
+  methods: {
+    useMobileMenu() {
+      if (this.width <= 884) {
+        return true
+      } else {
+        return false
+      }
+    },
+    handleResize() {
+      this.width = window.innerWidth
+    }
+  }
 }
 </script>
 
@@ -43,6 +70,8 @@ export default {
   justify-content: flex-end;
   align-items: center;
   flex-grow: 1;
+  flex: 2;
+  order: 2;
 }
 
 .user-login-wrapper {
@@ -71,7 +100,14 @@ export default {
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.25rem; /* 142.857% */
+  line-height: 1.25rem;
   letter-spacing: 0.0175rem;
+}
+
+// Mobile Styles
+.settings-mobile-menu-wrapper {
+  margin-left: 2rem;
+  display: flex;
+  align-self: center;
 }
 </style>

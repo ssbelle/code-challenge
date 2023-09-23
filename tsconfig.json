@@ -1,5 +1,16 @@
 {
-  "files": [],
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "tests/**/*", "src/services/mobileHelper"],
+  "exclude": [],
+  "compilerOptions": {   
+    "composite": true,
+    "noImplicitThis": false,
+    "baseUrl": ".",
+    "paths": {"@/*": ["./src/*", "src/services"]},
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
+  },
+  "allowJs": true,
+  "noImplicitThis": false,
   "references": [
     {
       "path": "./tsconfig.node.json"

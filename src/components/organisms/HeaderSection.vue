@@ -39,4 +39,17 @@ header {
     margin: 5rem 8rem 4.75rem;
   }
 }
+
+//  Mobile Styles
+@media (max-width: 884px) {
+  header .header {
+    margin: 5rem 8rem 1.13rem;
+  }
+}
+
+@media (max-width: 680px) {
+  header .header {
+    margin: 2.5rem 2.13rem 1.13rem;
+  }
+}
 </style>

@@ -7,7 +7,8 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     '@vue/eslint-config-typescript',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:vitest-globals/recommended'
   ],
   plugins: ['prettier'],
   rules: {
@@ -15,5 +16,8 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: 'latest'
+  },
+  env: {
+    'vitest-globals/env': true
   }
 }

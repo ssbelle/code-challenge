@@ -23,7 +23,7 @@ export default {
 .logo-wrapper {
   display: flex;
   align-items: center;
-  margin-right: 19.83rem;
+  flex: 4;
 
   .logo {
     width: 2.91444rem;

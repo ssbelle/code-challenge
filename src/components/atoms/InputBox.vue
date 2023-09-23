@@ -1,12 +1,3 @@
-<script lang="ts">
-export default {
-  setup() {
-    return {}
-  },
-  components: {}
-}
-</script>
-
 <template>
   <div class="search-box-wrapper">
     <img
@@ -25,6 +16,15 @@ export default {
     />
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  setup() {
+    return {}
+  },
+  components: {}
+}
+</script>
 
 <style>
 input {
