@@ -27,6 +27,11 @@ Navigate to the route of the project and run.
 npm install
 ```
 
+### Branch
+
+Select the 'main' branch for what I was able to accomplish in the 23 hours of working time I had within the 40hour/5day criteria.
+Select the 'better-code-now-that-i-have-time' branch (excuse my informal branch namingg convention, its more fun than "Feature/code-improvements")for more completed features and general updates I will be making as I find time on vacaction here.  
+
 ### Frontend Compile and Hot-Reload for Development
 
 Launch the front end server with this cmd, leave this running in a terminal.
