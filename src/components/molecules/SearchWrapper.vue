@@ -1,20 +1,23 @@
 <template>
   <section class="search-wrapper">
     <InputBox />
-    <BaseButton variant="primary" text="Search" />
+    <BaseButton
+      variant="primary"
+      text="Search"
+      v-on:click="filterProductsBySearch"
+    />
   </section>
 </template>
 
-<script lang="ts">
+<script setup lang="ts" name="SearchWrapper">
+import { useProductsStore } from '@/services/store/products'
 import InputBox from '@/components/atoms/InputBox.vue'
 import BaseButton from '@/components/atoms/BaseButton.vue'
 
-export default {
-  name: 'SearchWrapper',
-  setup() {
-    return {}
-  },
-  components: { InputBox, BaseButton }
+const productsStore = useProductsStore()
+
+const filterProductsBySearch = () => {
+  productsStore.FETCH_PRODUCTS(productsStore.query)
 }
 </script>
 

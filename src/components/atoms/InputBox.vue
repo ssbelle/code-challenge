@@ -9,6 +9,7 @@
       type="text"
       id="search"
       name="search"
+      v-model="productsStore.query"
       placeholder="Search"
       required
       minlength="2"
@@ -17,13 +18,10 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  setup() {
-    return {}
-  },
-  components: {}
-}
+<script setup lang="ts" name="InputBox">
+import { useProductsStore } from '@/services/store/products'
+
+const productsStore = useProductsStore()
 </script>
 
 <style>
