@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts" name="SearchWrapper">
-import { useProductsStore } from '@/services/store/products'
+import { useProductsStore } from '@/store/products'
 import InputBox from '@/components/atoms/InputBox.vue'
 import BaseButton from '@/components/atoms/BaseButton.vue'
 

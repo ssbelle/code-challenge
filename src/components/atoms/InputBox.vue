@@ -1,10 +1,15 @@
 <template>
   <div class="search-box-wrapper">
-    <img
-      alt="app-search-box-icon"
+    <BaseIcon
+      name="search-box-icon"
       class="search-box-icon"
-      src="@/assets/search-icon.svg"
-    />
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      iconColor="none"
+    >
+      <SearchIcon />
+    </BaseIcon>
     <input
       type="text"
       id="search"
@@ -19,7 +24,9 @@
 </template>
 
 <script setup lang="ts" name="InputBox">
-import { useProductsStore } from '@/services/store/products'
+import { useProductsStore } from '@/store/products'
+import BaseIcon from '@/components/atoms/BaseIcon.vue'
+import SearchIcon from '@/components/icons/SearchIcon.vue'
 
 const productsStore = useProductsStore()
 </script>
@@ -43,7 +50,6 @@ input {
   line-height: 1.25rem;
 
   &::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--gray-200);
     opacity: 1; /* Firefox */
     font-family: 'Inter', sans-serif;

@@ -1,8 +1,14 @@
+<template>
+  <HeaderSection />
+  <ProductListSection :products="products" />
+</template>
+
 <script lang="ts">
 import { mapActions, mapState } from 'pinia'
-import { useProductsStore, FETCH_PRODUCTS } from '@/services/store/products'
+import { useProductsStore, FETCH_PRODUCTS } from '@/store/products'
 import HeaderSection from '@/components/organisms/HeaderSection.vue'
 import ProductListSection from '@/components/organisms/ProductListSection.vue'
+
 export default {
   setup() {
     return {}
@@ -21,24 +27,9 @@ export default {
     window.addEventListener('resize', this.handleResize)
   },
   methods: {
-    ...mapActions(useProductsStore, [FETCH_PRODUCTS]),
-    showModalToggle() {
-      this.showModal = !this.showModal
-    },
-    useMobileProductList() {
-      if (this.width <= 884) {
-        return true
-      } else {
-        return false
-      }
-    }
+    ...mapActions(useProductsStore, [FETCH_PRODUCTS])
   }
 }
 </script>
-
-<template>
-  <HeaderSection :products="products" />
-  <ProductListSection :products="products" />
-</template>
 
 <style lang="scss"></style>

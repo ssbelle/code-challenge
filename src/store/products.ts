@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import fetchProducts from '@/services/api/fetchProducts'
-import type { Product } from '@/services/api/types'
+import fetchProducts from '@/api/fetchProducts'
+import type { Product } from '@/api/types'
 
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
 
@@ -21,6 +21,7 @@ export const useProductsStore = defineStore('products', {
       this.isLoading = true
       const products = await fetchProducts(query)
       this.products = products
+      this.query = ''
       this.isLoading = false
     }
   }

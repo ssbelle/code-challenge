@@ -4,34 +4,26 @@
   </section>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'ProductStatus',
-  setup() {
-    return {}
-  },
-  props: {
-    variant: {
-      type: String
-    }
-  },
-  computed: {}
-}
+<script lang="ts" setup name="ProductStatus">
+defineProps({
+  variant: {
+    type: String
+  }
+})
 </script>
 
 <style lang="scss">
 .product-status-wrapper > .product-status-bubble {
   border-left: none;
 }
+
 .product-status-bubble {
   display: flex;
   padding: 0.25rem 1.5rem;
   justify-content: center;
   align-items: center;
   border-radius: 0.75rem;
-  background-color: red;
   border-left: none;
-  color: var(--Maim, #605dec);
   text-align: center;
   font-family: var(--font-family-nunito);
   font-size: 0.75rem;
