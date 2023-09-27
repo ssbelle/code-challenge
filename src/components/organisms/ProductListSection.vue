@@ -26,7 +26,19 @@
         <div class="product-table-column status-column">Status</div>
         <div class="product-table-column quantity-column">Quantity</div>
         <div class="product-table-column product-column">Product Name</div>
-        <div class="product-table-column price-column">Price</div>
+        <div class="product-table-column price-column">
+          Prices
+          <BaseIcon
+            name="filter-by-icon"
+            class="filter-by-icon"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            iconColor="none"
+          >
+            <FilterByIcon />
+          </BaseIcon>
+        </div>
       </div>
       <div class="product-table-results">
         <ProductResult
@@ -45,6 +57,7 @@
 <script lang="ts">
 import ModalWrapper from '@/components/molecules/ModalWrapper.vue'
 import ProductResult from '@/components/molecules/ProductResult.vue'
+import FilterByIcon from '@/components/icons/FilterByIcon.vue'
 
 export default {
   name: 'ProductListSection',
@@ -65,7 +78,7 @@ export default {
       width: 885
     }
   },
-  components: { ProductResult, ModalWrapper },
+  components: { ProductResult, ModalWrapper, FilterByIcon },
   computed: {},
   methods: {
     showModalToggle() {
@@ -118,34 +131,32 @@ export default {
     .id-column {
       width: 4.375rem;
       display: flex;
-      // flex-shrink: 0;
       flex-grow: 1;
     }
     .status-column {
       width: 9rem;
-      // flex-shrink: 0;
       flex-grow: 1;
       align-items: center;
     }
     .quantity-column {
       width: 7.8125rem;
-      // flex-shrink: 0;
       flex-grow: 0;
       align-items: center;
     }
     .product-column {
       width: 39.9rem;
-      // flex-shrink: 0;
       flex-grow: 1;
       align-items: center;
     }
 
     .price-column {
       width: 10.6875rem;
-      // flex-shrink: 0;
       flex-grow: 1;
       align-items: center;
       border-left: 2px solid #e4e4ef;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
     }
   }
   .product-table-results {
@@ -177,6 +188,10 @@ export default {
     font-weight: 400;
     line-height: 1.25rem; /* 166.667% */
   }
+}
+
+.filter-by-icon {
+  margin-left: 1rem;
 }
 
 //  Mobile Styles
