@@ -10,7 +10,7 @@
       </div>
       <div class="product-table-results">
         <ProductResult
-          v-for="product in products"
+          v-for="product in this.products"
           :key="product['id']"
           :product="product"
           :mobile="true"
@@ -43,8 +43,6 @@
 </template>
 
 <script lang="ts">
-import { mapActions, mapState } from 'pinia'
-import { useProductsStore, FETCH_PRODUCTS } from '@/services/store/products'
 import ModalWrapper from '@/components/molecules/ModalWrapper.vue'
 import ProductResult from '@/components/molecules/ProductResult.vue'
 
@@ -53,24 +51,23 @@ export default {
   setup() {
     return {}
   },
+  props: {
+    products: {
+      type: Array
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+  },
   data() {
     return {
       showModal: false,
       width: 885
     }
   },
-  computed: {
-    ...mapState(useProductsStore, {
-      products: 'products'
-    })
-  },
   components: { ProductResult, ModalWrapper },
-  mounted() {
-    this.FETCH_PRODUCTS()
-    window.addEventListener('resize', this.handleResize)
-  },
+  computed: {},
   methods: {
-    ...mapActions(useProductsStore, [FETCH_PRODUCTS]),
     showModalToggle() {
       this.showModal = !this.showModal
     },
@@ -80,9 +77,6 @@ export default {
       } else {
         return false
       }
-    },
-    handleResize() {
-      this.width = window.innerWidth
     }
   }
 }

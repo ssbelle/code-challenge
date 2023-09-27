@@ -1,40 +1,59 @@
 <template>
   <section v-if="useMobileMenu()" class="settings-mobile-menu-wrapper">
-    <img
-      alt="app-settings-mobile-menu"
-      class="settings-mobile-icon"
-      src="@/assets/settings-mobile-menu-icon.svg"
-    />
+    <BaseIcon
+      name="mobile-menu-icon"
+      class="mobile-menu-icon"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      iconColor="none"
+      ><MobileMenuIcon />
+    </BaseIcon>
   </section>
   <section v-else class="settings-wrapper">
-    <div class="icon-wrapper">
-      <img
-        alt="app-settings-icon"
-        class="settings-icon"
-        src="@/assets/settings-icon.svg"
-      />
-    </div>
-    <div class="icon-wrapper">
-      <img
-        alt="app-notifications-icon"
-        class="notifications-icon"
-        src="@/assets/notifications-icon.svg"
-      />
-    </div>
+    <BaseIcon
+      name="settings-icon"
+      class="settings-icon icon-wrapper"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      iconColor="none"
+    >
+      <SettingsIcon />
+    </BaseIcon>
+    <BaseIcon
+      name="notifications-icon"
+      class="notifications-icon icon-wrapper"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      iconColor="none"
+    >
+      <NotificationsIcon />
+    </BaseIcon>
+
     <div class="user-login-wrapper">
-      <div class="icon-wrapper">
-        <img
-          alt="app-user-icon"
-          class="user-icon"
-          src="@/assets/user-icon.svg"
-        />
-      </div>
+      <BaseIcon
+        name="user-icon"
+        class="user-icon icon-wrapper"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        iconColor="none"
+      >
+        <UserIcon />
+      </BaseIcon>
       <span class="user-name">Adriana Arias</span>
     </div>
   </section>
 </template>
 
 <script lang="ts">
+import NotificationsIcon from '@/components/icons/NotificationsIcon.vue'
+import SettingsIcon from '@/components/icons/SettingsIcon.vue'
+import UserIcon from '@/components/icons/UserIcon.vue'
+import MobileMenuIcon from '@/components/icons/MobileMenuIcon.vue'
+
 export default {
   name: 'SettingsWrapper',
   setup() {
@@ -48,7 +67,7 @@ export default {
   mounted() {
     window.addEventListener('resize', this.handleResize)
   },
-  components: {},
+  components: { NotificationsIcon, SettingsIcon, UserIcon, MobileMenuIcon },
   methods: {
     useMobileMenu() {
       if (this.width <= 884) {

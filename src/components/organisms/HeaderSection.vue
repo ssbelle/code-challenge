@@ -8,22 +8,10 @@
   </header>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup name="HeaderSection">
 import LogoWrapper from '@/components/molecules/LogoWrapper.vue'
 import SearchWrapper from '@/components/molecules/SearchWrapper.vue'
 import SettingsWrapper from '@/components/molecules/SettingsWrapper.vue'
-
-export default {
-  name: 'HeaderSection',
-  setup() {
-    return {}
-  },
-  components: {
-    LogoWrapper,
-    SearchWrapper,
-    SettingsWrapper
-  }
-}
 </script>
 
 <style lang="scss">

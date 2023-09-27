@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "tests/**/*", "src/services/mobileHelper"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "tests/**/*", "src/utils"],
   "exclude": [],
   "compilerOptions": {   
     "composite": true,

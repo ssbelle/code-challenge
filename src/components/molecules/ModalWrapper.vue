@@ -5,11 +5,16 @@
         <div class="modal-header">
           <h6 class="header-title">Macbook Pro 16 inch (2020 )</h6>
           <div class="close-modal-icon-wrapper" @click="showModalToggle()">
-            <img
-              alt="app-close-modal-icon"
+            <BaseIcon
+              name="close-modal-icon"
               class="close-modal-icon"
-              src="@/assets/modal-exit.svg"
-            />
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              iconColor="none"
+            >
+              <ModalCloseIcon />
+            </BaseIcon>
           </div>
         </div>
 
@@ -51,21 +56,15 @@
   </Transition>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup name="ModalWrapper">
 import BaseButton from '@/components/atoms/BaseButton.vue'
+import ModalCloseIcon from '@/components/icons/ModalCloseIcon.vue'
 
-export default {
-  name: 'ModalWrapper',
-  setup() {
-    return {}
-  },
-  props: {
-    showModalToggle: {
-      type: Function
-    }
-  },
-  components: { BaseButton }
-}
+defineProps({
+  showModalToggle: {
+    type: Function
+  }
+})
 </script>
 
 <style lang="scss">
