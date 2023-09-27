@@ -24,6 +24,8 @@ export default {
   },
   mounted() {
     this.FETCH_PRODUCTS('')
+    const productsStore = useProductsStore()
+    productsStore.SORT_BY_ASCENDING
     window.addEventListener('resize', this.handleResize)
   },
   methods: {

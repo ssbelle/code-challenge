@@ -26,7 +26,7 @@
         <div class="product-table-column status-column">Status</div>
         <div class="product-table-column quantity-column">Quantity</div>
         <div class="product-table-column product-column">Product Name</div>
-        <div class="product-table-column price-column">
+        <div class="product-table-column price-column" @click="filterBy">
           Prices
           <BaseIcon
             name="filter-by-icon"
@@ -58,6 +58,7 @@
 import ModalWrapper from '@/components/molecules/ModalWrapper.vue'
 import ProductResult from '@/components/molecules/ProductResult.vue'
 import FilterByIcon from '@/components/icons/FilterByIcon.vue'
+import { useProductsStore } from '@/store/products'
 
 export default {
   name: 'ProductListSection',
@@ -90,6 +91,10 @@ export default {
       } else {
         return false
       }
+    },
+    filterBy() {
+      const productsStore = useProductsStore()
+      productsStore.SORT_BY_DESCENDING
     }
   }
 }
