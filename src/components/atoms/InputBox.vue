@@ -14,7 +14,7 @@
       type="text"
       id="search"
       name="search"
-      v-model="productsStore.query"
+      v-model.trim="productsStore.query"
       placeholder="Search"
       required
       minlength="2"

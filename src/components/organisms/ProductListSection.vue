@@ -3,7 +3,7 @@
     <div class="product-table-title">Products</div>
     <div class="product-result-count">10 of 64</div>
   </section>
-  <div v-if="useMobileProductList()" class="product-list">
+  <div v-if="isMobileOrTablet" class="product-list">
     <section class="product-table">
       <div class="product-table-headers">
         <div class="product-table-column product-column">Product Name</div>
@@ -54,49 +54,30 @@
   <ModalWrapper :showModalToggle="showModalToggle" :showModal="showModal" />
 </template>
 
-<script lang="ts">
+<script lang="ts" setup name="ProductListSection">
+import { ref } from 'vue'
 import ModalWrapper from '@/components/molecules/ModalWrapper.vue'
 import ProductResult from '@/components/molecules/ProductResult.vue'
 import FilterByIcon from '@/components/icons/FilterByIcon.vue'
 import { useProductsStore } from '@/store/products'
+import { mobileHelper } from '@/composables/mobileHelper'
 
-export default {
-  name: 'ProductListSection',
-  setup() {
-    return {}
-  },
-  props: {
-    products: {
-      type: Array
-    }
-  },
-  mounted() {
-    window.addEventListener('resize', this.handleResize)
-  },
-  data() {
-    return {
-      showModal: false,
-      width: 885
-    }
-  },
-  components: { ProductResult, ModalWrapper, FilterByIcon },
-  computed: {},
-  methods: {
-    showModalToggle() {
-      this.showModal = !this.showModal
-    },
-    useMobileProductList() {
-      if (this.width <= 884) {
-        return true
-      } else {
-        return false
-      }
-    },
-    filterBy() {
-      const productsStore = useProductsStore()
-      productsStore.SORT_BY_ASCENDING()
-    }
+const isMobileOrTablet = mobileHelper()
+const showModal = ref(false)
+
+defineProps({
+  products: {
+    type: Array
   }
+})
+
+const showModalToggle = () => {
+  showModal.value = !showModal.value
+}
+
+const filterBy = () => {
+  const productsStore = useProductsStore()
+  productsStore.SORT_BY_ASCENDING()
 }
 </script>
 

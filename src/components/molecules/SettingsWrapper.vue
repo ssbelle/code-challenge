@@ -1,5 +1,5 @@
 <template>
-  <section v-if="useMobileMenu()" class="settings-mobile-menu-wrapper">
+  <section v-if="isMobileOrTablet" class="settings-mobile-menu-wrapper">
     <BaseIcon
       name="mobile-menu-icon"
       class="mobile-menu-icon"
@@ -48,39 +48,14 @@
   </section>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup name="SettingsWrapper">
 import NotificationsIcon from '@/components/icons/NotificationsIcon.vue'
 import SettingsIcon from '@/components/icons/SettingsIcon.vue'
 import UserIcon from '@/components/icons/UserIcon.vue'
 import MobileMenuIcon from '@/components/icons/MobileMenuIcon.vue'
+import { mobileHelper } from '@/composables/mobileHelper'
 
-export default {
-  name: 'SettingsWrapper',
-  setup() {
-    return {}
-  },
-  data() {
-    return {
-      width: 885
-    }
-  },
-  mounted() {
-    window.addEventListener('resize', this.handleResize)
-  },
-  components: { NotificationsIcon, SettingsIcon, UserIcon, MobileMenuIcon },
-  methods: {
-    useMobileMenu() {
-      if (this.width <= 884) {
-        return true
-      } else {
-        return false
-      }
-    },
-    handleResize() {
-      this.width = window.innerWidth
-    }
-  }
-}
+const isMobileOrTablet = mobileHelper()
 </script>
 
 <style lang="scss">
@@ -128,5 +103,11 @@ export default {
   margin-left: 2rem;
   display: flex;
   align-self: center;
+}
+
+@media (max-width: 885px) {
+  .settings-wrapper {
+    justify-content: flex-start;
+  }
 }
 </style>
