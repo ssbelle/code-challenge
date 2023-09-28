@@ -5,6 +5,7 @@
 
 <script lang="ts">
 import { mapActions, mapState } from 'pinia'
+
 import { useProductsStore, FETCH_PRODUCTS } from '@/store/products'
 import HeaderSection from '@/components/organisms/HeaderSection.vue'
 import ProductListSection from '@/components/organisms/ProductListSection.vue'
@@ -18,15 +19,13 @@ export default {
       products: 'products'
     })
   },
+  mounted() {
+    this.FETCH_PRODUCTS('')
+    window.addEventListener('resize', this.handleResize)
+  },
   components: {
     HeaderSection,
     ProductListSection
-  },
-  mounted() {
-    this.FETCH_PRODUCTS('')
-    const productsStore = useProductsStore()
-    productsStore.SORT_BY_ASCENDING
-    window.addEventListener('resize', this.handleResize)
   },
   methods: {
     ...mapActions(useProductsStore, [FETCH_PRODUCTS])

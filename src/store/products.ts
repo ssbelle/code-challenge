@@ -25,14 +25,12 @@ export const useProductsStore = defineStore('products', {
       this.products = products
       this.query = ''
       this.isLoading = false
-    }
-  },
-  getters: {
-    [SORT_BY_ASCENDING](state: ProductsState) {
-      return state.products.sort((a, b) => a.total - b.total)
     },
-    [SORT_BY_DESCENDING](state: ProductsState) {
-      return state.products.sort((a, b) => b.total - a.total)
+    [SORT_BY_ASCENDING]() {
+      return this.products.sort((a: Product, b: Product) => a.total - b.total)
+    },
+    [SORT_BY_DESCENDING]() {
+      return this.products.sort((a: Product, b: Product) => b.total - a.total)
     }
   }
 })

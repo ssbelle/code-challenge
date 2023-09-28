@@ -94,7 +94,7 @@ export default {
     },
     filterBy() {
       const productsStore = useProductsStore()
-      productsStore.SORT_BY_DESCENDING
+      productsStore.SORT_BY_ASCENDING()
     }
   }
 }

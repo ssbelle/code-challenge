@@ -30,7 +30,7 @@ npm install
 ### Branch
 
 Select the 'main' branch for what I was able to accomplish in the 23 hours of working time I had within the 40hour/5day criteria.
-Select the 'better-code-now-that-i-have-time' branch (excuse my informal branch namingg convention, its more fun than "Feature/code-improvements")for more completed features and general updates I will be making as I find time on vacaction here.  
+Select the 'better-code-now-that-i-have-time' branch (excuse my informal branch namingg convention, its more fun than "Feature/code-improvements")for more completed features and general updates I will be making as I find time on vacaction here.
 
 ### Frontend Compile and Hot-Reload for Development
 
@@ -66,7 +66,8 @@ Build out more error handling for components and search functionality.
 Finish test suites.
 Extract more deplication of css into variables and mixins.
 Finish implementing typescript.
-Add filtering on data table.
+make the filtering on data table more genaric and scalable to other columms.
 Settings, Notifications, and Login/Auth.
+Build step.
 
 These things are not difficult it was a matter of time given my travel and lack of internet connectivity. I chose to demonstrate my knowledge of each of these concepts in part. I'd be happy to complete any features in any remaining timeline!
