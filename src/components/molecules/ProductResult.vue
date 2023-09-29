@@ -1,69 +1,39 @@
 <template>
-  <div v-if="useMobileProductListData" class="product-result-wrapper">
+  <div v-if="isMobileOrTablet" class="product-result-wrapper">
     <div class="product-column">
-      {{ productName }}
+      {{ this.product.product }}
       <span class="product-sku"
-        >{{ productSku }} - Qty: {{ productQuantity }}</span
+        >{{ this.product.productSku }} - Qty: {{ this.product.quantity }}</span
       >
     </div>
   </div>
   <div v-else class="product-result-wrapper">
-    <div class="id-column">{{ productID }}</div>
+    <div class="id-column">{{ this.product.id }}</div>
     <section class="status-column">
-      <ProductStatus :variant="productStatus"></ProductStatus>
+      <ProductStatus :variant="this.product.status"></ProductStatus>
     </section>
     <div class="quantity-column">
-      {{ productQuantity }}
+      {{ this.product.quantity }}
     </div>
     <div class="product-column">
-      {{ productName }}
-      <span class="product-sku">{{ productSku }}</span>
+      {{ this.product.product }}
+      <span class="product-sku">{{ this.product.serial }}</span>
     </div>
-    <div class="price-column">${{ productPrice }}</div>
+    <div class="price-column">${{ this.product.total }}</div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup name="ProductResult">
 import ProductStatus from '@/components/atoms/ProductStatus.vue'
+import { mobileHelper } from '@/composables/mobileHelper'
 
-export default {
-  name: 'ProductResult',
-  setup() {
-    return {}
-  },
-  props: {
-    product: {
-      type: Object
-    },
-    mobile: {
-      type: Boolean
-    }
-  },
-  components: { ProductStatus },
-  computed: {
-    productID() {
-      return `${this.product.id}`
-    },
-    productQuantity() {
-      return `${this.product.quantity}`
-    },
-    productName() {
-      return `${this.product.product}`
-    },
-    productSku() {
-      return `${this.product.serial}`
-    },
-    productPrice() {
-      return `${this.product.total}`
-    },
-    productStatus() {
-      return `${this.product.status}`
-    },
-    useMobileProductListData() {
-      return this.mobile
-    }
+const isMobileOrTablet = mobileHelper()
+
+defineProps({
+  product: {
+    type: Object
   }
-}
+})
 </script>
 
 <style lang="scss">
@@ -94,7 +64,6 @@ export default {
   .status-column {
     width: 9rem;
     display: flex;
-    // flex-shrink: 0;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
@@ -103,7 +72,6 @@ export default {
   .quantity-column {
     width: 7.8125rem;
     display: flex;
-    // flex-shrink: 0;
     flex-grow: 0;
     align-items: center;
     justify-content: center;
@@ -113,7 +81,6 @@ export default {
     display: flex;
     flex-direction: column;
     width: 39.9rem;
-    // flex-shrink: 0;
     flex-grow: 1;
     align-items: flex-start;
     gap: 0;
@@ -128,7 +95,6 @@ export default {
   .price-column {
     width: 10.6875rem;
     display: flex;
-    // flex-shrink: 0;
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;

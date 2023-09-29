@@ -1,54 +1,17 @@
 <template>
-  <section class="product-stats">
-    <div class="product-table-title">Products</div>
-    <div class="product-result-count">10 of 64</div>
-  </section>
-  <div v-if="isMobileOrTablet" class="product-list">
+  <ProductStats
+    :totalProductsCount="10"
+    :productResultCount="this.products.length"
+  />
+  <div class="product-list">
     <section class="product-table">
-      <div class="product-table-headers">
-        <div class="product-table-column product-column">Product Name</div>
-      </div>
-      <div class="product-table-results">
-        <ProductResult
-          v-for="product in this.products"
-          :key="product['id']"
-          :product="product"
-          :mobile="true"
-          @click="showModalToggle"
-        />
-      </div>
-    </section>
-  </div>
-  <div v-else class="product-list">
-    <section class="product-table">
-      <div class="product-table-headers">
-        <div class="product-table-column id-column">ID</div>
-        <div class="product-table-column status-column">Status</div>
-        <div class="product-table-column quantity-column">Quantity</div>
-        <div class="product-table-column product-column">Product Name</div>
-        <div class="product-table-column price-column" @click="filterBy">
-          Prices
-          <BaseIcon
-            name="filter-by-icon"
-            class="filter-by-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            iconColor="none"
-          >
-            <FilterByIcon />
-          </BaseIcon>
-        </div>
-      </div>
-      <div class="product-table-results">
-        <ProductResult
-          v-for="product in this.products"
-          :key="product['id']"
-          :product="product"
-          :mobile="false"
-          @click="showModalToggle"
-        />
-      </div>
+      <ProductTableHeaders
+        :headers="isMobileOrTablet ? mobileHeaders : desktopHeaders"
+      />
+      <ProductResultsWrapper
+        :productsToDisplay="this.products"
+        :showModalToggle="showModalToggle"
+      />
     </section>
   </div>
   <ModalWrapper :showModalToggle="showModalToggle" :showModal="showModal" />
@@ -57,13 +20,16 @@
 <script lang="ts" setup name="ProductListSection">
 import { ref } from 'vue'
 import ModalWrapper from '@/components/molecules/ModalWrapper.vue'
-import ProductResult from '@/components/molecules/ProductResult.vue'
-import FilterByIcon from '@/components/icons/FilterByIcon.vue'
-import { useProductsStore } from '@/store/products'
+import ProductTableHeaders from '@/components/atoms/ProductTableHeaders.vue'
+import ProductResultsWrapper from '@/components/molecules/ProductResultsWapper.vue'
+import ProductStats from '@/components/atoms/ProductStats.vue'
 import { mobileHelper } from '@/composables/mobileHelper'
 
-const isMobileOrTablet = mobileHelper()
 const showModal = ref(false)
+
+const showModalToggle = () => {
+  showModal.value = !showModal.value
+}
 
 defineProps({
   products: {
@@ -71,14 +37,10 @@ defineProps({
   }
 })
 
-const showModalToggle = () => {
-  showModal.value = !showModal.value
-}
-
-const filterBy = () => {
-  const productsStore = useProductsStore()
-  productsStore.SORT_BY_ASCENDING()
-}
+const isMobileOrTablet = mobileHelper()
+// const showModal = showModalToggle()
+const mobileHeaders = ['Product Name']
+const desktopHeaders = ['ID', 'Status', 'Quantity', 'Product Name', 'Prices']
 </script>
 
 <style lang="scss">
@@ -129,13 +91,13 @@ const filterBy = () => {
       flex-grow: 0;
       align-items: center;
     }
-    .product-column {
+    .product-name-column {
       width: 39.9rem;
       flex-grow: 1;
       align-items: center;
     }
 
-    .price-column {
+    .prices-column {
       width: 10.6875rem;
       flex-grow: 1;
       align-items: center;
@@ -152,41 +114,11 @@ const filterBy = () => {
   }
 }
 
-.product-stats {
-  display: flex;
-  margin: 0 0 0.25rem 8rem;
-
-  .product-table-title {
-    color: var(--black-200);
-    font-family: var(--font-family-nunito);
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.25rem;
-    margin-right: 1.13rem;
-  }
-
-  .product-result-count {
-    color: var(--gray-500);
-    font-family: var(--font-family-nunito);
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.25rem; /* 166.667% */
-  }
-}
-
 .filter-by-icon {
   margin-left: 1rem;
 }
 
 //  Mobile Styles
-@media (max-width: 884px) {
-  .product-stats {
-    margin: 0 0 1.19rem 8rem;
-  }
-}
-
 @media (max-width: 1177px) {
   .product-list .product-table-headers .status-column {
     display: none;
@@ -197,9 +129,6 @@ const filterBy = () => {
 @media (max-width: 680px) {
   .product-list .product-table {
     margin: 0 2.2rem 1.44rem;
-  }
-  .product-stats {
-    margin: 0 0 1.19rem 2.2rem;
   }
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <Transition name="modal">
-    <div v-if="this.$attrs.showModal" class="modal-mask">
+    <div v-if="this.showModal" class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">
           <h6 class="header-title">Macbook Pro 16 inch (2020 )</h6>
-          <div class="close-modal-icon-wrapper" @click="showModalToggle()">
+          <div class="close-modal-icon-wrapper" @click="this.showModalToggle()">
             <BaseIcon
               name="close-modal-icon"
               class="close-modal-icon"
@@ -48,7 +48,7 @@
           <BaseButton
             variant="secondary"
             text="Close"
-            @click="showModalToggle()"
+            @click="this.showModalToggle"
           />
         </div>
       </div>
@@ -59,8 +59,15 @@
 <script lang="ts" setup name="ModalWrapper">
 import BaseButton from '@/components/atoms/BaseButton.vue'
 import ModalCloseIcon from '@/components/icons/ModalCloseIcon.vue'
+// import { showModalToggle } from '@/composables/showModalToggle'
+
+// const showModalValue = showModalToggle().value
+// const showModalMethod = showModalToggle().method
 
 defineProps({
+  showModal: {
+    type: Boolean
+  },
   showModalToggle: {
     type: Function
   }

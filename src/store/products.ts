@@ -5,6 +5,7 @@ import type { Product } from '@/api/types'
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
 export const SORT_BY_ASCENDING = 'SORT_BY_ASCENDING'
 export const SORT_BY_DESCENDING = 'SORT_BY_DESCENDING'
+export const FILTERED_PRODUCTS = 'FILTERED_PRODUCTS'
 
 export interface ProductsState {
   isLoading: Boolean
@@ -25,6 +26,11 @@ export const useProductsStore = defineStore('products', {
       this.products = products
       this.query = ''
       this.isLoading = false
+    }
+  },
+  getters: {
+    [FILTERED_PRODUCTS]() {
+      return this.products
     },
     [SORT_BY_ASCENDING]() {
       return this.products.sort((a: Product, b: Product) => a.total - b.total)

@@ -96,7 +96,7 @@ describe('product store', () => {
             status: 'purple'
           }
         ]
-        const result = store.SORT_BY_ASCENDING()
+        const result = store.SORT_BY_ASCENDING
 
         expect(result).toStrictEqual(sorted)
       })
@@ -158,7 +158,7 @@ describe('product store', () => {
             status: 'yellow'
           }
         ]
-        const result = store.SORT_BY_DESCENDING()
+        const result = store.SORT_BY_DESCENDING
 
         expect(result).toStrictEqual(sorted)
       })

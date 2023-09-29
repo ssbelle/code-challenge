@@ -60,14 +60,27 @@ npm run test:unit
 
 TODOs:
 
-Programatically add the product status to the data.
-Extract search functionality into service and pinia actions.
-Build out more error handling for components and search functionality.
-Finish test suites.
-Extract more deplication of css into variables and mixins.
-Finish implementing typescript.
-make the filtering on data table more genaric and scalable to other columms.
-Settings, Notifications, and Login/Auth.
-Build step.
+- Use form validation from package instead of custom with toast.
+- Refctor buttons and icons to share base component, add click ability on icons without duplication and reduce code.
+- Programatically add the product status to the data.
+- Refactor modal and make modal dynamic, display name of product clicked at least.
+- Build out more error handling for components and search functionality.
+- Finish test suites.
+- Extract more duplication of css into variables and mixins.
+- Finish implementing typescript.
+- Finish build steps.
+- Login/Auth.
 
-These things are not difficult it was a matter of time given my travel and lack of internet connectivity. I chose to demonstrate my knowledge of each of these concepts in part. I'd be happy to complete any features in any remaining timeline!
+ACCOMPLISHED over the last 2 days (approximately 10 hours spent):
+
+- Added basic search querying, with basic search handling and a fallback for 0 results.
+- Made the price filter functional, which resets on a blank query to return all results ( for the purposes of this application currently)
+- Made the filtering on data table more genaric and easily scalable to other columms.
+- Refactored componennts to remove duplication for desktop and mobile.
+- Refactored components to manage the atomic structure better and clean templates
+- Added baseIcon to the global registration
+- Refactored icons to be components
+- Added mobile helper (based on width not query agent for the purposes of this app currently)
+- Added modal helper to better manage the modal after refactor.
+- Added getters in store to handle the filter by price.
+- Updated the initial tests on api call, store, and rendered products

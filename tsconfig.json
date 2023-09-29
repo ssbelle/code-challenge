@@ -4,6 +4,7 @@
   "exclude": [],
   "compilerOptions": {   
     "composite": true,
+    "useUnknownInCatchVariables": false,
     "noImplicitThis": false,
     "baseUrl": ".",
     "paths": {"@/*": ["./src/*", "src/services"]},
