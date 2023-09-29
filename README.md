@@ -1,8 +1,8 @@
 # Tucows Coding Challenge
 
-This project was the result of almost 4 days of coding time all told, since there was unavoidable vacation time during the development week!
+This project was the result of almost 5 days coding time all told, since there was unavoidable vacation time during the development week! I very much appreciate your patience and support as I endevoured to learn and build this application.
 
-There was a learning curve but the overall result is a functioning application!
+Being my first vue project from scratch, there was a learning curve but the overall result is a functioning application!
 
 Tooling:
 Used HTML, CSS/SCSS, JavaScript, Vue and Pinia.
@@ -11,7 +11,7 @@ The following are the detailed features for the web application I created that a
 
 1. It displays a list of products on the home page by fetching the data from the api using a helper fetch function found at 'src/services/api/fetchProducts'. It then uses a series to vue components built with atomic structure in mind to render te products to the homepage as per designs and with all the product data properties displayed.
 
-2. It implements an initial search functionality allowing users to search for products by name.
+2. It implements an initial search functionality allowing users to search for products by name and other data. It will return the total number of results that match your query, it will also return a message to the user is zero results were found. Some very initial error handling is in place for the search query as well.
 
 3. It shows a product details page when a product is clicked from the products results list.
 
