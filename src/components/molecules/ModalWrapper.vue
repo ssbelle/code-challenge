@@ -59,10 +59,6 @@
 <script lang="ts" setup name="ModalWrapper">
 import BaseButton from '@/components/atoms/BaseButton.vue'
 import ModalCloseIcon from '@/components/icons/ModalCloseIcon.vue'
-// import { showModalToggle } from '@/composables/showModalToggle'
-
-// const showModalValue = showModalToggle().value
-// const showModalMethod = showModalToggle().method
 
 defineProps({
   showModal: {

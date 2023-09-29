@@ -38,7 +38,6 @@ defineProps({
 })
 
 const isMobileOrTablet = mobileHelper()
-// const showModal = showModalToggle()
 const mobileHeaders = ['Product Name']
 const desktopHeaders = ['ID', 'Status', 'Quantity', 'Product Name', 'Prices']
 </script>
