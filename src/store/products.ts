@@ -29,9 +29,6 @@ export const useProductsStore = defineStore('products', {
     }
   },
   getters: {
-    [FILTERED_PRODUCTS]() {
-      return this.products
-    },
     [SORT_BY_ASCENDING]() {
       return this.products.sort((a: Product, b: Product) => a.total - b.total)
     },
