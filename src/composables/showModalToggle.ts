@@ -5,7 +5,6 @@ export function showModalHandler() {
 
   const showModalToggle = () => {
     showModal.value = !showModal.value
-    // return showModal.value
   }
   return { showModalToggle, showModal }
 }
