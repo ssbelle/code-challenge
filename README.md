@@ -70,6 +70,12 @@ TODOs:
 - Finish implementing typescript.
 - Finish build steps.
 - Login/Auth.
+- Finish adding an 'isLoading' state to ui - line 28 in products.ts
+- Extract constants for column headers from ProductListSection.vue
+- Verify showModal helper is being used properly
+- Fix columnns responsiveness
+- Should base icons be fed their data through interface?
+-
 
 ACCOMPLISHED over the last 2 days (approximately 10 hours spent):
 
