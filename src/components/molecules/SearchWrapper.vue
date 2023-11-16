@@ -1,12 +1,6 @@
 <template>
   <section class="search-wrapper">
-    <form
-      id="app"
-      @submit="validatedForm"
-      action="https://vuejs.org/"
-      method="post"
-      novalidate="true"
-    >
+    <form id="app" @submit="validatedForm">
       <InputBox />
       <BaseButton variant="primary" text="Search" v-on:click="handleOnSubmit" />
     </form>
