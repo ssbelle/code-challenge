@@ -1,64 +1,19 @@
 <template>
-  <Transition name="modal">
+  <Transition name="modal-slide">
     <div v-if="this.showModal" class="modal-mask">
       <div class="modal-container">
-        <div class="modal-header">
-          <h6 class="header-title">Macbook Pro 16 inch (2020 )</h6>
-          <div class="close-modal-icon-wrapper" @click="this.showModalToggle()">
-            <BaseIcon
-              name="close-modal-icon"
-              class="close-modal-icon"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              iconColor="none"
-            >
-              <ModalCloseIcon />
-            </BaseIcon>
-          </div>
-        </div>
-
-        <div class="modal-body">
-          <div class="modal-body-image">
-            <img
-              alt="app-modal-product-image"
-              class="modal-product-image"
-              src="@/assets/modal-product-image.png"
-            />
-          </div>
-          <div class="modal-body-text">
-            <span>Key Features</span>
-            <ul>
-              <li>2.6 GHz Intel Core i7 6-Core (9th Gen)</li>
-              <li>16GB of 2666 MHz DDR4 RAM | 8TB SSD</li>
-              <li>16" 3072 x 1920 Retina Display</li>
-              <li>AMD Radeon Pro 5600M GPU (8GB HBM2)</li>
-            </ul>
-            <span>
-              The Apple 16" MacBook Pro features a 16" Retina Display, a Magic
-              Keyboard with a redesigned scissor mechanism, a six-speaker
-              high-fidelity sound system, and an advanced thermal design. This
-              MacBook Pro also features an AMD Radeon Pro 5600M graphics card, a
-              7nm mobile discrete GPU designed for pro users. With 8GB of HBM2
-            </span>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <BaseButton
-            variant="secondary"
-            text="Close"
-            @click="this.showModalToggle"
-          />
-        </div>
+        <ModalHeader :showModalToggle="this.showModalToggle" />
+        <ModalBody />
+        <ModalFooter :showModalToggle="this.showModalToggle" />
       </div>
     </div>
   </Transition>
 </template>
 
 <script lang="ts" setup name="ModalWrapper">
-import BaseButton from '@/components/atoms/BaseButton.vue'
-import ModalCloseIcon from '@/components/icons/ModalCloseIcon.vue'
+import ModalHeader from '@/components/atoms/ModalHeader.vue'
+import ModalBody from '@/components/atoms/ModalBody.vue'
+import ModalFooter from '@/components/atoms/ModalFooter.vue'
 
 defineProps({
   showModal: {
@@ -71,6 +26,14 @@ defineProps({
 </script>
 
 <style lang="scss">
+.modal-slide-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.modal-slide-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -80,7 +43,6 @@ defineProps({
   height: 100%;
   background: var(--gray-600);
   display: flex;
-  transition: opacity 0.3s ease;
 }
 
 .modal-container {
